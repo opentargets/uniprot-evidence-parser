@@ -5,7 +5,7 @@ function showHelp {
     cat<<EOF
 Usage: $0 pageSize [omim2efo|longEfo2Omim]
 
-Fetches omim/efo mappings from the OLS REST API (http://www.ebi.ac.uk/ols/docs/api).
+Fetches omim/efo mappings from the OLS REST API (http://www.ebi.ac.uk/ols4/docs/api).
 
 Argument description:
   pageSize              => specify the number of results to be fetched in each curl request
@@ -42,17 +42,16 @@ headers="Accept: application/json"
 
 
 ## ---------------------------- FETCH TOTAL NUMBER OF PAGES OF RESULTS ----------------------------
-url="https://www.ebi.ac.uk/ols/api/ontologies/efo/terms?size=$size"
+url="https://www.ebi.ac.uk/ols4/api/ontologies/efo/terms?size=$size"
 totalPages="$(curl --silent "$url" -H "$headers" | python -c '
 import sys, json
 print("{}".format(json.load(sys.stdin)["page"]["totalPages"]))
 '
 )"
 
-
 ## ---------------------------- FETCH EACH PAGE OF RESULTS AND FIND THE OMIM/EFO MAPPINGS ----------------------------
 for pageNum in $(seq 1 $totalPages); do
-   url="https://www.ebi.ac.uk/ols/api/ontologies/efo/terms?page=$pageNum&size=$size"
+   url="https://www.ebi.ac.uk/ols4/api/ontologies/efo/terms?page=$pageNum&size=$size"
    curl --silent "$url" -H "$headers" | PYTHONIOENCODING=utf8 python -c '
 import sys, json, os
 

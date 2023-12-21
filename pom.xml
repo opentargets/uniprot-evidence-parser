@@ -6,7 +6,7 @@
 	<artifactId>open-targets</artifactId>
 	<version>1.0.0</version>
 	<properties>
-		<japi.version>1.2.2-SNAPSHOT</japi.version>
+		<japi.version>1.2.5</japi.version>
 		<jcommander.version>1.47</jcommander.version>
 		<guice.version>4.0</guice.version>
 		<slf4j.version>1.7.20</slf4j.version>
@@ -40,7 +40,7 @@
 		<dependency>
 			<groupId>uk.ac.ebi.uniprot</groupId>
 			<artifactId>japi</artifactId>
-			<version>${japi.version}</version>
+			<version>1.2.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -273,7 +273,11 @@
 		</plugins>
 	</build>
 	<repositories>
-
+		<repository>
+			<id>ebiUniprotPublic</id>
+			<name>ebi-uniprot-public</name>
+			<url>https://www.ebi.ac.uk/uniprot/artifactory/public</url>
+		</repository>
 		<repository>
 			<id>jitpack.io</id>
 			<url>https://jitpack.io</url>
