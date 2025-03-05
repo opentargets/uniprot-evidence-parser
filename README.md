@@ -5,9 +5,15 @@ This project contains the source code for generating the disease association evi
 * https://www.opentargets.org/
 
 ## Generating a new data release
+
+The REST API endpoint to fetch the most recent Uniprot release is no longer available. The most recent release needs to be set manually based on [docs here](https://www.uniprot.org/release-notes?query=*).
+
 To generate a new data release, run the following script:
 
 ```bash
+# Set Uniprot version:
+export VERSION=2025_01
+
 $ cd src/bin
 $ ./OpenTargetsCreator -all
 ```
